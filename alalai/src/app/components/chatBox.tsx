@@ -1,12 +1,12 @@
 function ChatBox() {
   return (
-    <div className="chat-box border rounded-lg shadow-lg p-4 bg-white w-full max-w-md text-black">
-      <div className="chat-header">Chat</div>
-      <div className="chat-messages">
-        <div className="message">Hello!</div>
-        <div className="message">How are you?</div>
-      </div>
-      <input type="text" placeholder="Type a message..." />
+    //create a chat box with a text area and a send button
+    <div className="flex flex-col gap-4 w-full h-full bg-white rounded-lg shadow-lg p-4 text-bl-400">
+        <div className="flex flex-col gap-2 h-full overflow-y-auto"></div>
+        <div className="flex items-center gap-2">
+            <input type="text" placeholder="Type a message..." className="border border-gray-300 rounded-lg p-2 w-full" />
+            <button className="bg-blue-500 text-white rounded-lg p-2">Send</button>
+        </div>
     </div>
   );
 }
