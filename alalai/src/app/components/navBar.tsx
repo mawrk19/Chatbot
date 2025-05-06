@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import Link from 'next/link';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -14,6 +15,12 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import InfoIcon from '@mui/icons-material/Info';
 import SlideshowIcon from '@mui/icons-material/Slideshow';
 
+const menuItems = [
+  { label: 'New Chat', href: '/', icon: <PlaylistAddIcon /> },
+  { label: 'Model', href: '/model', icon: <AutoModeIcon /> },
+  { label: 'About', href: '/about', icon: <InfoIcon /> },
+];
+
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
 
@@ -23,16 +30,15 @@ export default function TemporaryDrawer() {
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-
       <List>
-        {['New Chat', 'Model', 'About'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index === 0 ? <PlaylistAddIcon/> : index === 1 ? <AutoModeIcon/> : <InfoIcon/> }
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
+        {menuItems.map((item) => (
+          <ListItem key={item.label} disablePadding>
+            <Link href={item.href} passHref legacyBehavior>
+              <ListItemButton component="a">
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -41,7 +47,9 @@ export default function TemporaryDrawer() {
 
   return (
     <div className="absolute left-[2rem] top-[2rem] gap-4 rounded-lg p-4">
-      <Button onClick={toggleDrawer(true)} className="text-4xl"> <SlideshowIcon/> </Button>
+      <Button onClick={toggleDrawer(true)} className="text-4xl">
+        <SlideshowIcon />
+      </Button>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
