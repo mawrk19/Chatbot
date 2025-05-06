@@ -51,8 +51,8 @@ export default function TemporaryDrawer() {
   );
 
   return (
-    <div>
-      <Button onClick={toggleDrawer(true)}>Open drawer</Button>
+    <div className="absolute left-[2rem] top-[2rem] gap-4 rounded-lg p-4">
+      <Button onClick={toggleDrawer(true)}>O</Button>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
