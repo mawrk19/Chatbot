@@ -12,6 +12,7 @@ import ListItemText from '@mui/material/ListItemText';
 import AutoModeIcon from '@mui/icons-material/AutoMode';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import InfoIcon from '@mui/icons-material/Info';
+import SlideshowIcon from '@mui/icons-material/Slideshow';
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
@@ -40,7 +41,7 @@ export default function TemporaryDrawer() {
 
   return (
     <div className="absolute left-[2rem] top-[2rem] gap-4 rounded-lg p-4">
-      <Button onClick={toggleDrawer(true)}>O</Button>
+      <Button onClick={toggleDrawer(true)} className="text-4xl"> <SlideshowIcon/> </Button>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
